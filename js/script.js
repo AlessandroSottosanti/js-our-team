@@ -40,25 +40,56 @@ const teamMembers = [
 const cardsMembersElem = document.getElementById("cards-members");
 console.log(cardsMembersElem);
 
+// input form
+const formElem = document.getElementById("form");
+
+// Richiamo funzione per caricare le card
+renderTeamMembers(teamMembers);
+
+
+let newMember = {};
+
+// Add Member event
+formElem.addEventListener("submit", function (event) {
+
+  // Preveniamo il ricaricamento della pagina
+  event.preventDefault();
+
+
+  // Ottengo i valori dell'input
+  const nameValue = document.getElementById("name").value.trim();
+  const roleValue = document.getElementById("role").value.trim();
+  const emailValue = document.getElementById("email").value.trim();
+  const imgValue = document.getElementById("img").value.trim() || "./img/zoro.png";
+
+  // creo il nuovo membro
+  newMember = {
+    name: nameValue,
+    role: roleValue,
+    email: emailValue,
+    img: imgValue
+  }
+
+  console.log(newMember);
+
+  // aggiungo il membro all'array
+  teamMembers.push(newMember);
+
+  // Richiamo la funzione per rigenerare e mostrare le card con il nuovo membro
+  renderTeamMembers();
+
+  // Resetto i campi del form dopo l'invio
+  formElem.reset();
+
+});
+
 console.log(teamMembers);
 
-let injectedHtml = ``;
 
-for(i = 0; i < teamMembers.length; i++) {
-  let curMemb = teamMembers[i];
-  injectedHtml += `
-         <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-3 ">
-          <div class="card bg-dark text-white">
-            <div class="card-header d-flex justify-content-center">
-             <img src="./${curMemb.img}" alt="${curMemb.img}">
-            </div>
-            <div class="card-body">
-              <h3>${curMemb.name}</h3>
-              <p>${curMemb.role}</p>
-              <p>Email: ${curMemb.email}</p>
-            </div>
-          </div>
-        </div> `;
-}
+
+
+
+
 
 cardsMembersElem.innerHTML = injectedHtml;
+

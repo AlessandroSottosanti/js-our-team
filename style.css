@@ -5,3 +5,12 @@
 .cm_bg-grey {
     background-color:#212529f3;
 }
+
+.card-header img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover; 
+    border-radius: 50%; 
+  }
+  
