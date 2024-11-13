@@ -37,3 +37,16 @@ const teamMembers = [
   }
 ];
 
+const listElem = document.getElementById("list");
+console.log(listElem);
+
+console.log(teamMembers);
+
+let injectedHtml = ``;
+
+for(i = 0; i < teamMembers.length; i++) {
+  let curMemb = teamMembers[i];
+  injectedHtml += `<li>${curMemb.name}, ${curMemb.email}</li>`;
+}
+
+listElem.innerHTML = injectedHtml;
