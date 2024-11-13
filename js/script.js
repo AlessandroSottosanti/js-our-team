@@ -37,8 +37,8 @@ const teamMembers = [
   }
 ];
 
-const listElem = document.getElementById("list");
-console.log(listElem);
+const cardsMembersElem = document.getElementById("cards-members");
+console.log(cardsMembersElem);
 
 console.log(teamMembers);
 
@@ -46,7 +46,19 @@ let injectedHtml = ``;
 
 for(i = 0; i < teamMembers.length; i++) {
   let curMemb = teamMembers[i];
-  injectedHtml += `<li>${curMemb.name}, ${curMemb.email}</li>`;
+  injectedHtml += `
+         <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-3 ">
+          <div class="card">
+            <div class="card-header d-flex justify-content-center">
+             <img src="./${curMemb.img}" alt="${curMemb.img}">
+            </div>
+            <div class="card-body">
+              <h3>${curMemb.name}</h3>
+              <p>${curMemb.role}</p>
+              <p>Email: ${curMemb.email}</p>
+            </div>
+          </div>
+        </div> `;
 }
 
-listElem.innerHTML = injectedHtml;
+cardsMembersElem.innerHTML = injectedHtml;
