@@ -14,3 +14,10 @@
     border-radius: 50%; 
   }
   
+  .card-member {
+    transition: transform 0.2s ease; 
+  }
+  
+  .card-member:hover {
+    transform: scale(1.05); 
+  }
